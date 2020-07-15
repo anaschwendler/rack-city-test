@@ -4,11 +4,25 @@
 class Application
   def call(env)
     puts inspect_env(env)
-    status = 200
-    headers = { 'Content-Type' => 'text/html' }
-    body = ["I'm learning how to use Rack"]
+    handle_request(env['REQUEST_METHOD'], env['PATH_INFO'])
+  end
 
-    [status, headers, body]
+  private
+
+  def handle_request(method, path)
+    if method == 'GET'
+      get(path)
+    else
+      method_not_allowed(method)
+    end
+  end
+
+  def get(path)
+    [200, { 'Content-Type' => 'text/html' }, ["You have requested the path #{path}, using GET"]]
+  end
+
+  def method_not_allowed(method)
+    [405, {}, ["Method not allowed: #{method}"]]
   end
 
   def inspect_env(env)
