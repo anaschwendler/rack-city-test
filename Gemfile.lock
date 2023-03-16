@@ -1,4 +1,7 @@
 GEM
+  specs:
+
+GEM
   remote: https://rubygems.org/
   specs:
     ast (2.4.1)
@@ -6,7 +9,7 @@ GEM
     parallel (1.19.2)
     parser (2.7.1.4)
       ast (~> 2.4.1)
-    rack (2.2.3)
+    rack (2.2.6.4)
     rainbow (3.0.0)
     regexp_parser (1.7.1)
     rexml (3.2.4)
